@@ -1,0 +1,23 @@
+.outerGrid {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 5rem 1fr;
+  grid-template-columns: 18rem 1fr;
+  grid-template-areas:
+    "alias-header alias-header"
+    "alias-sidebar alias-innerGrid";
+}
+
+.header {
+  grid-area: alias-header;
+  background-color: red;
+}
+
+.sidebar {
+  grid-area: alias-sidebar;
+  background-color: blue;
+}
+
+.innerGrid {
+  grid-area: alias-innerGrid;
+}

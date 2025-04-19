@@ -1,0 +1,93 @@
+
+.transactionFormContainer {
+  background-color: lightblue;
+  padding: 0.5rem;
+}
+
+.formBodyContainer {
+  background-color: lightcoral;
+  padding: 0.5rem;
+}
+
+.headerContainer {
+
+  display: flex;
+
+  background-color: lightgreen;
+  padding: 0.5rem;
+}
+
+.expenseButton {
+  flex-basis: 50%;
+
+  background-color: darkblue;
+  padding: 0.5rem;
+}
+
+.incomeButton {
+  flex-basis: 50%;
+
+  background-color: darkgoldenrod;
+  padding: 0.5rem;
+}
+
+.controlsContainer {
+  background-color: lightslategrey;
+  padding: 0.5rem;
+}
+
+.row1Container {
+  background-color: lightpink;
+}
+
+.row1Inputs {
+  display: flex;
+  background-color: aqua;
+  padding: 0.5rem;
+}
+
+.row1Inputs > select {
+  flex-basis: 50%;
+}
+
+.amountContainer {
+  flex-basis: 50%;
+  display: flex;
+  background-color: lightsalmon;
+  padding: 0.5rem;
+}
+
+.row2Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row2Inputs {
+  display: flex;
+  background-color: lightseagreen;
+  padding: 0.5rem;
+}
+
+.row2Inputs > select {
+  flex-basis: 50%;
+}
+
+.dateContainer {
+  flex-basis: 50%;
+  display: flex;
+  background-color: limegreen;
+}
+
+.row2Controls {
+  display: flex;
+  background-color: lightsalmon;
+  padding: 0.5rem;
+}
+
+.noteInput {
+  flex-basis: 50%;
+}
+
+.row2Controls > button {
+  flex-basis: 50%;
+}
