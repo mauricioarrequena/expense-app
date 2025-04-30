@@ -1,21 +1,19 @@
 import TransactionForm from "./TransactionForm";
-import styles from "../styles/layout.module.css";
+import styles from "../styles/Layout.module.css";
+import { RecentTransactionsList } from "./RecentTransactionsList";
+import Sidebar from "./Sidebar";
+import { Outlet } from "react-router-dom";
 
-
-function Layout() {
+export default function Layout() {
   return (
-    <div className={styles.outerGrid}>
-      <div className={styles.header}>
-        <p>deah header</p>
-      </div>
-      <div className={styles.sidebar}>
-        <p>deah sidebar</p>
-      </div>
-      <div className={styles.innerGrid}>
-        <TransactionForm />
+    <div className={styles.outergrid}>
+      <header className={styles.header}>
+        <div>header deah</div>
+      </header>
+      <Sidebar />
+      <div className={styles.innergrid}>
+        <Outlet />
       </div>
     </div>
   );
 }
-
-export default Layout;

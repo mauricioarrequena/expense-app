@@ -1,23 +1,24 @@
-.outerGrid {
+.outergrid {
   height: 100vh;
   display: grid;
-  grid-template-rows: 5rem 1fr;
-  grid-template-columns: 18rem 1fr;
+  grid-template-rows: var(--header-h) calc(100vh - var(--header-h));
+  grid-template-columns: var(--sidebar-w) 1fr;
   grid-template-areas:
-    "alias-header alias-header"
-    "alias-sidebar alias-innerGrid";
+    "alias-header   alias-header"
+    "alias-nav      alias-innergrid";
 }
 
 .header {
   grid-area: alias-header;
-  background-color: red;
+  background-color: var(--primary-blue);
 }
 
-.sidebar {
-  grid-area: alias-sidebar;
-  background-color: blue;
+.nav {
+  grid-area: alias-nav;
+  background-color: green;
 }
 
-.innerGrid {
-  grid-area: alias-innerGrid;
+.innergrid {
+  grid-area: alias-innergrid;
+  background-color: var(--light-gray);
 }
