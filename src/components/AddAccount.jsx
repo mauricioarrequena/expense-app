@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/AddAcount.module.css";
 import AccountGroup from "../enums/AccountGroup";
+import { postAccount } from "../services/accountService";
 
 export default function AddAcount() {
   const [name, setName] = useState("");
@@ -14,9 +15,28 @@ export default function AddAcount() {
   const [selectedAccountGroup, setSelectedAccountGroup] = useState(null);
   const [dollar, setDollar] = useState(false);
   const [balance, setBalance] = useState(0);
+  const [dashboard, setDashboard] = useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const newAccount = {
+      name,
+      group: selectedAccountGroup,
+      dollar: dollar,
+      balance: parseFloat(balance),
+      showOnDashboard: dashboard,
+    };
+
+    try {
+      const result = await postAccount(newAccount);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-    <form className={styles.container}>
+    <form className={styles.container} onSubmit={handleSubmit}>
       <div className={styles.topSection}>
         <div className={styles.titleContainer}>
           <span>icon</span>
@@ -57,6 +77,7 @@ export default function AddAcount() {
             <input
               type="checkbox"
               className={styles.dollarCheckbox}
+              value={dollar}
               onChange={(e) => setDollar(e.target.value)}
             />
             <label> us dollar</label>
@@ -73,7 +94,12 @@ export default function AddAcount() {
         </div>
         <div className={styles.section4}>
           <div className={styles.dashboardContainer}>
-            <input type="checkbox" className={styles.dashboardCheckbox} />
+            <input
+              type="checkbox"
+              className={styles.dashboardCheckbox}
+              value={dashboard}
+              onChange={(e) => setDashboard(e.target.value)}
+            />
             <label>Show on dashboard</label>
           </div>
           <div className={styles.submitContainer}>

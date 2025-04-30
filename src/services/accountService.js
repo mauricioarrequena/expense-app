@@ -8,3 +8,19 @@ export async function getAccounts() {
 
   return await response.json();
 }
+
+export async function postAccount(account) {
+  const response = await fetch(`${API_URL}/accounts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(account),
+  });
+
+  if (!response.ok) {
+    throw new Error("failed to create accoutn");
+  }
+
+  return await response.json();
+}
