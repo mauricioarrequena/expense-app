@@ -1,9 +1,14 @@
 import styles from "../styles/AddAcount.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccountGroup from "../enums/AccountGroup";
-import { postAccount } from "../services/accountService";
+import { postAccount, putAccount } from "../services/accountService";
 
-export default function AddAcount({ onCloseButtonClick, onAccountAdded }) {
+export default function AddAcount({
+  onCloseButtonClick,
+  onAccountAdded,
+  editMode,
+  accountToEdit,
+}) {
   const accountGroups = [
     { id: AccountGroup.CASH, name: "Cash" },
     { id: AccountGroup.BANK_ACCOUNT, name: "Bank Account" },
@@ -17,6 +22,16 @@ export default function AddAcount({ onCloseButtonClick, onAccountAdded }) {
   const [balance, setBalance] = useState(0);
   const [isShownOnDashboard, setIsShownDashboard] = useState(false);
 
+  useEffect(() => {
+    if (editMode) {
+      setName(accountToEdit.name);
+      setSelectedGroup(accountToEdit.group);
+      setIsDollar(accountToEdit.dollar);
+      setBalance(accountToEdit.balance);
+      setIsShownDashboard(accountToEdit.showOnDashboard);
+    }
+  }, [editMode, accountToEdit]);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const newAccount = {
@@ -28,10 +43,14 @@ export default function AddAcount({ onCloseButtonClick, onAccountAdded }) {
     };
 
     try {
-      const result = await postAccount(newAccount);
+      if (editMode) {
+        await putAccount(accountToEdit.id, newAccount);
+      } else {
+        await postAccount(newAccount);
+      }
+      
       onAccountAdded();
       onCloseButtonClick();
-      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -84,6 +103,7 @@ export default function AddAcount({ onCloseButtonClick, onAccountAdded }) {
           <span className={styles.group}>Group</span>
           <select
             className={styles.selectType}
+            value={group}
             onChange={(e) => {
               setSelectedGroup(e.target.value);
             }}
@@ -109,7 +129,7 @@ export default function AddAcount({ onCloseButtonClick, onAccountAdded }) {
             <input
               type="submit"
               className={styles.submitButton}
-              value="Save Account"
+              value={!editMode ? "Save Account" : "Edit Account"}
             />
           </div>
         </div>

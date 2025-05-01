@@ -4,6 +4,7 @@ export default function AccountsList({
   className = "",
   onAddButtonClick,
   accounts,
+  onEditButtonClick,
 }) {
   return (
     <div className={`${styles.container} ${className}`}>
@@ -21,7 +22,7 @@ export default function AccountsList({
       <div className={styles.bottomSection}>
         {accounts.map((account) => {
           return (
-            <div className={styles.accountItem}>
+            <div key={account.id} className={styles.accountItem}>
               <div className={styles.accountName}>
                 <span>{account.name}</span>
               </div>
@@ -31,6 +32,7 @@ export default function AccountsList({
               <div className={styles.accountButtons}>
                 <span
                   className={`material-symbols-outlined ${styles.editIcon}`}
+                  onClick={() => onEditButtonClick(account)}
                 >
                   edit
                 </span>

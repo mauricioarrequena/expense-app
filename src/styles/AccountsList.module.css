@@ -93,3 +93,8 @@
   border-radius: 50px;
   border-color: var(--border-gray);
 }
+
+.editIcon:hover {
+  cursor: pointer;
+  background-color: var(--light-gray);
+}

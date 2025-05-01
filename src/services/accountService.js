@@ -24,3 +24,19 @@ export async function postAccount(account) {
 
   return await response.json();
 }
+
+export async function putAccount(id, accountToUpdate) {
+  const response = await fetch(`${API_URL}/accounts/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(accountToUpdate),
+  });
+
+  if (!response.ok) {
+    throw new Error("failed to update account");
+  }
+
+  return await response.json();
+}
