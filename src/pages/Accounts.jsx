@@ -35,7 +35,8 @@ export default function Accounts() {
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
-            <AddAcount onCloseButtonClick={closeModal} />
+            <AddAcount onCloseButtonClick={closeModal}
+            onAccountAdded={fetchAccounts} />
           </div>
         </div>
       )}

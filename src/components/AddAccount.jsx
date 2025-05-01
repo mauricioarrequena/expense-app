@@ -3,7 +3,7 @@ import { useState } from "react";
 import AccountGroup from "../enums/AccountGroup";
 import { postAccount } from "../services/accountService";
 
-export default function AddAcount({ onCloseButtonClick }) {
+export default function AddAcount({ onCloseButtonClick, onAccountAdded }) {
   const accountGroups = [
     { id: AccountGroup.CASH, name: "Cash" },
     { id: AccountGroup.BANK_ACCOUNT, name: "Bank Account" },
@@ -29,6 +29,7 @@ export default function AddAcount({ onCloseButtonClick }) {
 
     try {
       const result = await postAccount(newAccount);
+      onAccountAdded();
       onCloseButtonClick();
       console.log(result);
     } catch (error) {
