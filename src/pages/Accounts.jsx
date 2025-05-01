@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Accounts.module.css";
 import AccountsList from "../components/AccountsList";
 import AddAcount from "../components/AddAccount";
@@ -9,20 +9,29 @@ export default function Accounts() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [accountToEdit, setAccountToEdit] = useState(null);
-
-  async function fetchAccounts() {
-    const accounts = await getAccounts();
-    setAccounts(accounts);
-  }
+  const [totalBalance, setTotalBalance] = useState(0);
 
   async function deleteSelectedAccount(account) {
     await deleteAccount(account.id);
     await fetchAccounts();
   }
 
-  useState(() => {
+  async function fetchAccounts() {
+    const accounts = await getAccounts();
+    setAccounts(accounts);
+  }
+
+  useEffect(() => {
     fetchAccounts();
   }, []);
+
+  useEffect(() => {
+    const total = accounts.reduce(
+      (sum, account) => sum + parseFloat(account.balance),
+      0
+    );
+    setTotalBalance(total);
+  }, [accounts]);
 
   const openModal = () => {
     setEditMode(false);
@@ -48,6 +57,7 @@ export default function Accounts() {
         accounts={accounts}
         onEditButtonClick={openModalEditMode}
         onDeleteButtonClick={deleteSelectedAccount}
+        totalBalance={totalBalance}
       />
       {isModalOpen && (
         <div className={styles.modalOverlay}>

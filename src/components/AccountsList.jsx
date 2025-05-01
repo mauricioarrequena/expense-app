@@ -6,6 +6,7 @@ export default function AccountsList({
   accounts,
   onEditButtonClick,
   onDeleteButtonClick,
+  totalBalance,
 }) {
   return (
     <div className={`${styles.container} ${className}`}>
@@ -18,7 +19,8 @@ export default function AccountsList({
         </button>
       </div>
       <div className={styles.middleSection}>
-        <span>Bank Account</span>
+        <span className={styles.middleText}>Bank Account</span>
+        <span className={styles.totalBalance}>{totalBalance}</span>
       </div>
       <div className={styles.bottomSection}>
         {accounts.map((account) => {

@@ -45,10 +45,20 @@
 }
 
 .middleSection {
+  display: flex;
+  justify-content: space-between;
   padding: 0.8rem;
+  background-color: var(--light-gray);
+}
+
+.middleText {
   color: var(--dark-gray);
   font-weight: 700;
-  background-color: var(--light-gray);
+}
+
+.totalBalance {
+  color: var(--green);
+  font-weight: 700;
 }
 
 .bottomSection {
@@ -73,11 +83,11 @@
 }
 
 .accountAmount {
+  margin-right: 0.5rem;
   text-align: end;
   color: var(--green);
-  margin-right: 0.5rem;
+  font-weight: 700;
 }
-
 
 .accountButtons {
   width: 5rem;
