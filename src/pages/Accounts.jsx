@@ -1,10 +1,21 @@
+import { useState } from "react";
 import styles from "../styles/Accounts.module.css";
 import AccountsList from "../components/AccountsList";
 import AddAcount from "../components/AddAccount";
-import { useState } from "react";
+import { getAccounts } from "../services/accountService";
 
 export default function Accounts() {
+  const [accounts, setAccounts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  async function fetchAccounts() {
+    const accounts = await getAccounts();
+    setAccounts(accounts);
+  }
+
+  useState(() => {
+    fetchAccounts();
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -19,6 +30,7 @@ export default function Accounts() {
       <AccountsList
         className={styles.customAccountList}
         onAddButtonClick={openModal}
+        accounts={accounts}
       />
       {isModalOpen && (
         <div className={styles.modalOverlay}>

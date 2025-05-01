@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
 import styles from "../styles/AccountsList.module.css";
-import { getAccounts } from "../services/accountService";
 
-export default function AccountsList({ className = "", onAddButtonClick }) {
-  const [accounts, setAccounts] = useState([]);
-
-  useEffect(() => {
-    const fetchAccounts = async () => {
-      const accountsData = await getAccounts();
-      setAccounts(accountsData);
-    };
-
-    fetchAccounts();
-  }, []);
-
+export default function AccountsList({
+  className = "",
+  onAddButtonClick,
+  accounts,
+}) {
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.topSection}>
