@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Accounts.module.css";
 import AccountsList from "../components/AccountsList";
 import AddAcount from "../components/AddAccount";
-import { getAccounts } from "../services/accountService";
+import { getAccounts, deleteAccount } from "../services/accountService";
 
 export default function Accounts() {
   const [accounts, setAccounts] = useState([]);
@@ -13,6 +13,11 @@ export default function Accounts() {
   async function fetchAccounts() {
     const accounts = await getAccounts();
     setAccounts(accounts);
+  }
+
+  async function deleteSelectedAccount(account) {
+    await deleteAccount(account.id);
+    await fetchAccounts();
   }
 
   useState(() => {
@@ -42,6 +47,7 @@ export default function Accounts() {
         onAddButtonClick={openModal}
         accounts={accounts}
         onEditButtonClick={openModalEditMode}
+        onDeleteButtonClick={deleteSelectedAccount}
       />
       {isModalOpen && (
         <div className={styles.modalOverlay}>

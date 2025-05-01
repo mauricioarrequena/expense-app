@@ -5,6 +5,7 @@ export default function AccountsList({
   onAddButtonClick,
   accounts,
   onEditButtonClick,
+  onDeleteButtonClick,
 }) {
   return (
     <div className={`${styles.container} ${className}`}>
@@ -35,6 +36,12 @@ export default function AccountsList({
                   onClick={() => onEditButtonClick(account)}
                 >
                   edit
+                </span>
+                <span
+                  className={`material-symbols-outlined ${styles.deleteIcon}`}
+                  onClick={() => onDeleteButtonClick(account)}
+                >
+                  delete
                 </span>
               </div>
             </div>

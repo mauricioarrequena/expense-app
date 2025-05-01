@@ -75,26 +75,36 @@
 .accountAmount {
   text-align: end;
   color: var(--green);
-
+  margin-right: 0.5rem;
 }
 
 
 .accountButtons {
   width: 5rem;
   display: flex;
-  justify-content: center;
+  column-gap: 0.4rem;
 }
 
 .editIcon {
   padding: 0.5rem;
   font-size: 1.2rem;
-  border-style: solid;
-  border-width: 2px;
+  border: 2px solid var(--border-gray);
   border-radius: 50px;
-  border-color: var(--border-gray);
 }
 
 .editIcon:hover {
+  cursor: pointer;
+  background-color: var(--light-gray);
+}
+
+.deleteIcon {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 2px solid var(--border-gray);
+  border-radius: 50px;
+}
+
+.deleteIcon:hover {
   cursor: pointer;
   background-color: var(--light-gray);
 }
