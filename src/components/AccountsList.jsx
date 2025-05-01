@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/AccountsList.module.css";
 import { getAccounts } from "../services/accountService";
 
-export default function AccountsList({ className = "" }) {
+export default function AccountsList({ className = "", onAddButtonClick }) {
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function AccountsList({ className = "" }) {
   return (
     <div className={`${styles.container} ${className}`}>
       <div className={styles.topSection}>
-        <button className={styles.addButton}>
+        <button className={styles.addButton} onClick={onAddButtonClick}>
           <span className={`material-symbols-outlined ${styles.addIcon}`}>
             add
           </span>
