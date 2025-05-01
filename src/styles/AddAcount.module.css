@@ -1,90 +1,143 @@
-
-
-/* .container {
-} */
+.container {
+  background-color: var(--white);
+}
 
 .topSection {
-  border-top-style: solid;
-  border-bottom-style: solid;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border-gray);
 }
 
 .titleContainer {
   display: flex;
-  column-gap: 1rem;
+  column-gap: 0.6rem;
+}
+
+.title {
+  font-size: 1.2rem;
+}
+
+.closeButton {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+  background-color: var(--border-gray);
 }
 
 .middleSection {
   display: flex;
-  flex-direction: column;
-  padding: 0 0.5rem 0 0.5rem;
-  border-top-style: solid;
+  column-gap: 0.8rem;
+  padding: 1rem 1rem;
+  border: 1px none var(--border-gray);
   border-bottom-style: solid;
 }
 
-.section1 {
+.middleLeft {
+  width: 50%;
   display: flex;
+  flex-direction: column;
 }
 
 .name {
-  flex-basis: 50%;
-}
-
-.group {
-  flex-basis: 50%;
-}
-
-.section2 {
-  display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .inputName {
-  flex-basis: 50%;
-}
-
-.selectType {
-  flex-basis: 50%;
-}
-
-
-.section3 {
-  display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.6rem;
 }
 
 .dollarContainer {
-  flex-basis: 50%;
+  margin-bottom: 1rem;
   display: flex;
+  column-gap: 0.5rem;
+}
+
+.dollarCheckbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--white);
+}
+
+.dollarLabel {
+  font-size: 1rem;
+}
+
+.dashboardContainer {
+  margin-bottom: 1rem;
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.dashboardCheckbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--white);
+}
+
+.dashboardLabel {
+  font-size: 1rem;
+}
+
+.middleRight {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.group {
+  margin-bottom: 0.2rem;
+}
+
+.selectType {
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.6rem;
 }
 
 .balanceContainer {
-  flex-basis: 50%;
+  margin-bottom: 1rem;
+  width: 100%;
   display: flex;
 }
 
 .balanceInput {
-  width: 50%;
+  flex: 1;
+  padding: 0.4rem 0.6rem;
 }
 
-.section4 {
+.dollarMark {
   display: flex;
-  margin-bottom: 0.5rem;
-
-}
-
-.dashboardContainer {
-  flex-basis: 50%;
-  display: flex;
-}
-
-.submitContainer {
-  flex-basis: 50%;
-  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.6rem;
+  background-color: var(--border-gray);
 }
 
 .submitButton {
   width: 100%;
+  padding: 0.6rem;
+  border-style: none;
+  color: var(--white);
+  background-color: var(--primary-blue);
 }
+
+.bottomSection {
+  display: flex;
+  height: 1rem;
+  background-color: var(--border-gray);
+}
+
 
 
 

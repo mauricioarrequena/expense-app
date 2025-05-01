@@ -3,7 +3,6 @@ import AccountsList from "../components/AccountsList";
 import AddAcount from "../components/AddAccount";
 import { useState } from "react";
 
-
 export default function Accounts() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,13 +16,14 @@ export default function Accounts() {
 
   return (
     <div className={styles.container}>
-      <button onClick={openModal}>open modal</button>
-      <AccountsList className={styles.customAccountList} />
+      <AccountsList
+        className={styles.customAccountList}
+        onAddButtonClick={openModal}
+      />
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
-            <AddAcount />
-            {/* <button className={styles.closeButton} onClick={closeModal}>Close Modal</button> */}
+            <AddAcount onCloseButtonClick={closeModal} />
           </div>
         </div>
       )}

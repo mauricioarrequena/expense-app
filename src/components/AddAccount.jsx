@@ -1,34 +1,35 @@
-import { useState } from "react";
 import styles from "../styles/AddAcount.module.css";
+import { useState } from "react";
 import AccountGroup from "../enums/AccountGroup";
 import { postAccount } from "../services/accountService";
 
-export default function AddAcount() {
-  const [name, setName] = useState("");
+export default function AddAcount({ onCloseButtonClick }) {
   const accountGroups = [
     { id: AccountGroup.CASH, name: "Cash" },
-    { id: AccountGroup.BANK_ACCOUNT, name: "Cash" },
+    { id: AccountGroup.BANK_ACCOUNT, name: "Bank Account" },
     { id: AccountGroup.DEPOSIT, name: "Deposit" },
     { id: AccountGroup.CREDIT, name: "Credit" },
     { id: AccountGroup.ASSET, name: "Asset" },
   ];
-  const [selectedAccountGroup, setSelectedAccountGroup] = useState(null);
-  const [dollar, setDollar] = useState(false);
+  const [name, setName] = useState("");
+  const [group, setSelectedGroup] = useState(AccountGroup.CASH);
+  const [isDollar, setIsDollar] = useState(false);
   const [balance, setBalance] = useState(0);
-  const [dashboard, setDashboard] = useState(false);
+  const [isShownOnDashboard, setIsShownDashboard] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     const newAccount = {
       name,
-      group: selectedAccountGroup,
-      dollar: dollar,
+      group: group,
+      dollar: isDollar,
       balance: parseFloat(balance),
-      showOnDashboard: dashboard,
+      showOnDashboard: isShownOnDashboard,
     };
 
     try {
       const result = await postAccount(newAccount);
+      onCloseButtonClick();
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -39,16 +40,18 @@ export default function AddAcount() {
     <form className={styles.container} onSubmit={handleSubmit}>
       <div className={styles.topSection}>
         <div className={styles.titleContainer}>
-          <span>icon</span>
-          <span>New Account</span>
+          <span className={`material-symbols-outlined ${styles.icon}`}>
+            draft
+          </span>
+          <span className={styles.title}>New Account</span>
         </div>
+        <button className={styles.closeButton} onClick={onCloseButtonClick}>
+          x
+        </button>
       </div>
       <div className={styles.middleSection}>
-        <div className={styles.section1}>
+        <div className={styles.middleLeft}>
           <span className={styles.name}>Name</span>
-          <span className={styles.group}>Group</span>
-        </div>
-        <div className={styles.section2}>
           <input
             type="text"
             className={styles.inputName}
@@ -57,10 +60,31 @@ export default function AddAcount() {
               setName(e.target.value);
             }}
           />
+          <div className={styles.dollarContainer}>
+            <input
+              type="checkbox"
+              className={styles.dollarCheckbox}
+              checked={isDollar}
+              onChange={(e) => setIsDollar(e.target.checked)}
+            />
+            <label className={styles.dollarLabel}>US Dollarr</label>
+          </div>
+          <div className={styles.dashboardContainer}>
+            <input
+              type="checkbox"
+              className={styles.dashboardCheckbox}
+              checked={isShownOnDashboard}
+              onChange={(e) => setIsShownDashboard(e.target.checked)}
+            />
+            <label className={styles.dashboardLabel}>Show on dashboard</label>
+          </div>
+        </div>
+        <div className={styles.middleRight}>
+          <span className={styles.group}>Group</span>
           <select
             className={styles.selectType}
             onChange={(e) => {
-              setSelectedAccountGroup(e.target.value);
+              setSelectedGroup(e.target.value);
             }}
           >
             {accountGroups.map((accountGroup) => {
@@ -71,17 +95,6 @@ export default function AddAcount() {
               );
             })}
           </select>
-        </div>
-        <div className={styles.section3}>
-          <div className={styles.dollarContainer}>
-            <input
-              type="checkbox"
-              className={styles.dollarCheckbox}
-              value={dollar}
-              onChange={(e) => setDollar(e.target.value)}
-            />
-            <label> us dollar</label>
-          </div>
           <div className={styles.balanceContainer}>
             <input
               type="number"
@@ -91,19 +104,12 @@ export default function AddAcount() {
             />
             <span className={styles.dollarMark}>USD</span>
           </div>
-        </div>
-        <div className={styles.section4}>
-          <div className={styles.dashboardContainer}>
-            <input
-              type="checkbox"
-              className={styles.dashboardCheckbox}
-              value={dashboard}
-              onChange={(e) => setDashboard(e.target.value)}
-            />
-            <label>Show on dashboard</label>
-          </div>
           <div className={styles.submitContainer}>
-            <input type="submit" className={styles.submitButton} />
+            <input
+              type="submit"
+              className={styles.submitButton}
+              value="Save Account"
+            />
           </div>
         </div>
       </div>
