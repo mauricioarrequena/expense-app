@@ -8,7 +8,6 @@
 .headerSection {
   display: flex;
   padding: 0.5rem;
-  border: 3px solid green;
   background-color: var(--middle-gray);
 }
 
@@ -75,17 +74,61 @@
 .mainSection {
   display: flex;
   padding: 0.5rem;
-  border: 2px solid darkorange;
 }
 
 .footerSection {
   display: flex;
-  padding: 0.5rem;
-  justify-content: flex-end;
-  border: 6px solid darkmagenta;
 }
 
-
 .transactionsListContainer {
-  border: 1px solid orange;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+
+.transactionItem {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-gray);
+}
+
+.itemLeftSide {
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.transactionDate {
+  color: var(--dark-gray);
+}
+
+.transactionIcon {
+  font-weight: 700;
+  color: var(--dark-gray);
+}
+
+.transactionNote {
+  color: var(--dark-gray);
+}
+
+.itemRightSide {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.amount {
+}
+
+.editIcon {
+  padding: 0.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-gray);
+}
+
+.editIcon:hover {
+  cursor: pointer;
+  background-color: var(--middle-gray);
 }
