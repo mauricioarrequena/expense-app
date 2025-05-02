@@ -1,0 +1,91 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  background-color: var(--white);
+}
+
+.headerSection {
+  display: flex;
+  padding: 0.5rem;
+  border: 3px solid green;
+  background-color: var(--middle-gray);
+}
+
+.headerControls {
+  display: flex;
+  border: 1px solid var(--border-gray);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  background-color: var(--white);
+}
+
+.addButton:hover {
+  cursor: pointer;
+}
+
+.addIcon {
+  padding: 0.2rem 0;
+  background-color: var(--light-gray);
+}
+
+.addText {
+  padding: 0 1rem;
+}
+
+.calendarButton {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  background-color: var(--white);
+}
+
+.calendarButton:hover {
+  cursor: pointer;
+}
+
+.calendarIcon {
+  padding: 0.2rem 0;
+  background-color: var(--light-gray);
+}
+
+.calendarText {
+  padding: 0 1rem;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  border: 0px;
+}
+
+.filterButton:hover {
+  cursor: pointer;
+}
+
+.filterIcon {
+  padding: 0.2rem 0;
+  background-color: var(--light-gray);
+}
+
+.mainSection {
+  display: flex;
+  padding: 0.5rem;
+  border: 2px solid darkorange;
+}
+
+.footerSection {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: flex-end;
+  border: 6px solid darkmagenta;
+}
+
+
+.transactionsListContainer {
+  border: 1px solid orange;
+}

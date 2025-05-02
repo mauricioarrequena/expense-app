@@ -1,0 +1,149 @@
+.container {
+  background-color: var(--white);
+}
+
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.titleIcon {
+}
+
+.titleText {
+}
+
+.closeButton {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background-color: transparent;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: var(--middle-gray);
+}
+
+.controlSection {
+  display: flex;
+}
+
+.controlButton {
+  padding: 0.8rem;
+  background-color: var(--white);
+  border: 1px solid var(--border-gray);
+}
+
+.controlButton:hover {
+  cursor: pointer;
+  background-color: var(--middle-gray);
+}
+
+.expenseButton {
+  flex: 1;
+}
+
+.incomeButton {
+  flex: 1;
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+}
+
+.fromText {
+  margin-bottom: 0.5rem;
+}
+
+.row1 {
+  margin-bottom: 1rem;
+  display: flex;
+  column-gap: 1rem;
+}
+
+.selectControl {
+  padding: 0.5rem;
+  border: 1px solid var(--border-gray);
+}
+
+.accountSelect {
+  flex-basis: 50%;
+}
+
+.amountContainer {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-gray);
+}
+
+.amountInput {
+  flex: 1;
+  padding: 0.5rem;
+  border: 0;
+}
+
+.amountIcon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0.8rem 0 2rem;
+    background-color: var(--middle-gray);
+}
+
+.tagsText {
+  margin-bottom: 0.5rem;
+}
+
+.row2 {
+  margin-bottom: 1rem;
+  display: flex;
+  column-gap: 1rem;
+}
+
+.tagSelect {
+  flex-basis: 50%;
+}
+
+.dateContainer {
+  flex-basis: 50%;
+  display: flex;
+}
+
+.dateInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-gray);
+}
+
+.row3 {
+  display: flex;
+  column-gap: 1rem;
+}
+
+.noteInput {
+  flex-basis: 50%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-gray);
+}
+
+.submitButton {
+  flex-basis: 50%;
+  border: 0;
+  color: var(--white);
+  background-color: var(--primary-blue);
+}
